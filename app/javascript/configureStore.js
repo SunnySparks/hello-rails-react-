@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore } from "redux";
 import thunk from 'redux-thunk';
 
+/*
 const initialState = { 
   things: [
     {
@@ -9,11 +10,31 @@ const initialState = {
     }
   ]
 };
+*/
 
+const initialState = { 
+  greetings: [
+    {
+      greet: 'Cheers, mate',
+    }
+  ]
+};
+
+/*
 function rootReducer(state, action) {
   console.log(action.type);
   switch (action.type) {
     case 'GET_THINGS_SUCCESS':
+      return { things: action.json.things };
+  }
+  return state;
+}
+*/
+
+function rootReducer(state, action) {
+  console.log(action.type);
+  switch (action.type) {
+    case 'GET_GREETINGS_SUCCESS':
       return { things: action.json.things };
   }
   return state;
