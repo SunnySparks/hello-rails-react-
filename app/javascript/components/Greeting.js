@@ -27,14 +27,13 @@ export function getGreetingsSuccess(json){
 
 class Greeting extends React.Component {
   render () {
+    const greetList = [];
     const { greetings } = this.props;
     const greetingsList = greetings.map((greet) => {
-      const greetList = [];
       greetList.push(greet.greeting);
       // console.log(greet.greeting);
-      console.log(greetList);
-      var randomGreet = greetList[Math.floor(Math.random()*greetList.length)];
-      console.log('random greet', randomGreet);
+      // 
+      // console.log('random greet', randomGreet);
       return (
         <div>
           <div>here</div>
@@ -42,22 +41,32 @@ class Greeting extends React.Component {
         </div>
       );
     })
+    console.log(greetList);
+    const randomGreet = greetList[Math.floor(Math.random()*greetList.length)];
+    console.log('random greet', randomGreet);
+
     console.log(greetings);
-    greetings.forEach((greet) => {
-      console.log(greet);
+    const random = greetings.forEach((greet) => {
+      // console.log(greet);
       const list = [];
       list.push(greet.greeting);
       // console.log(greet.greeting);
-      console.log(list);
-      let rGreet = list[Math.floor(Math.random()*list.length)];
-      console.log('rgreet', rGreet);
+      // console.log(list);
+      const rGreet = list[Math.floor(Math.random()*list.length)];
+      // console.log('rgreet', rGreet);
+      return (
+        <div>
+          <div>here</div>
+          <div>{ rGreet }</div>
+        </div>
+      );
     })
     return (
       <React.Fragment>
         Greeting: {this.props.greeting}
         <button className="getGreetingsBtn" onClick={() => this.props.getGreetings()}>Greetings</button>
         <br />
-        <div>{ greetingsList }</div>
+        <div>{ randomGreet }</div>
         {/*
         <ul>{ greetingsList }</ul>
         */}
