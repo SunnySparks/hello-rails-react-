@@ -6,9 +6,6 @@ import { createStructuredSelector } from 'reselect';
 const GET_GREETINGS_REQUEST = 'GET_GREETINGS_REQUEST';
 const GET_GREETINGS_SUCCESS = 'GET_GREETINGS_SUCCESS';
 
-const GET_THINGS_REQUEST = 'GET_THINGS_REQUEST';
-const GET_THINGS_SUCCESS = 'GET_THINGS_SUCCESS';
-
 function getGreetings(){
   console.log('getGreetings() Action!!')
   return dispatch => {
@@ -27,34 +24,19 @@ export function getGreetingsSuccess(json) {
   };
 };
 
-function getThings(){
-  console.log('getThings() Action!!')
-  return dispatch => {
-    dispatch({ type: GET_THINGS_REQUEST });
-    return fetch(`v1/things.json`)
-      .then(response => response.json())
-      .then(json => dispatch(getThingsSuccess(json)))
-      .catch(error => console.log(error));
-  };
-};
-
-export function getThingsSuccess(json) {
-  return {
-    type: GET_THINGS_SUCCESS,
-    json
-  };
-};
-
 class HelloWorld extends React.Component {
   render () {
+    console.log(greetings);
     const { greetings } = this.props;
     const greetingsList = greetings.map((greet) => {
-      return <li>{greet.greet} {greet.guid}</li>
-    })
+      console.log(greet);
+      return <li>{greet.greeting}</li>
+    });
+
     return (
       <React.Fragment>
         Greeting: {this.props.greeting}
-        <button className="getGreetingsBtn" onClick={() => this.props.getGreetings()}>getGreetings</button>
+        <button className="getThingsBtn" onClick={() => this.props.getGreetings()}>getGreetings</button>
         <br />
         <ul>{ greetingsList }</ul>
       </React.Fragment>
@@ -62,6 +44,46 @@ class HelloWorld extends React.Component {
   }
 }
 
+/*
+function getGreetings(){
+  console.log('getGreetings() Action!!')
+  return dispatch => {
+    dispatch({ type: GET_GREETINGS_REQUEST });
+    return fetch(`v1/greetings.json`)
+      .then(response => console.log(response.json()))
+      .then(json => dispatch(getGreetingsSuccess(json)))
+      .catch(error => console.log(error));
+  };
+};
+
+export function getGreetingsSuccess(json) {
+  return {
+    type: GET_GREETINGS_SUCCESS,
+    json
+  };
+};
+
+class HelloWorld extends React.Component {
+  render () {
+    const { greetings } = this.props;
+    console.log(greetings);
+    const greetingsList = greetings.map((greet) => {
+      console.log(greet);
+      console.log(greet.greet);
+      return <li>{greet.greet}</li>
+    });
+    return (
+      <React.Fragment>
+        Greeting: {this.props.greeting}
+        <button className="getThingsBtn" onClick={() => this.props.getGreetings()}>getGreetings</button>
+        <br />
+        <ul>{ greetingsList }</ul>
+      </React.Fragment>
+    );
+  }
+}
+
+*/
 const structuredSelector = createStructuredSelector({
   greetings: state => state.greetings,
 });

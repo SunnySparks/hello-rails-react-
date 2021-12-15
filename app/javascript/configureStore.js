@@ -13,32 +13,28 @@ const initialState = {
 */
 
 const initialState = { 
-  greetings: [
-    {
-      greet: 'Cheers, mate',
-    }
-  ]
+  greetings: []
 };
 
-/*
-function rootReducer(state, action) {
-  console.log(action.type);
-  switch (action.type) {
-    case 'GET_THINGS_SUCCESS':
-      return { things: action.json.things };
-  }
-  return state;
-}
-*/
 
 function rootReducer(state, action) {
   console.log(action.type);
   switch (action.type) {
     case 'GET_GREETINGS_SUCCESS':
-      return { things: action.json.things };
+      return { greetings: action.json.greetings };
   }
   return state;
 }
+
+/*
+function rootReducer(state, action) {
+  console.log(action.type);
+  switch (action.type) {
+    default:
+    return state
+  }
+}
+*/
 
 export default function configureStore() {
   const store = createStore(
