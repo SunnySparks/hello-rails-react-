@@ -8,10 +8,13 @@ class V1::GreetingsController < ApplicationController
         greeting: 'Hi, friend',
       },
       {
-        greeting: 'g\'day',
+        greeting: 'G\'day',
       },
       {
         greeting: 'Hello, Peter',
+      },
+      {
+        greeting: 'Buenas, buenaaaaaaaaaaaaaaaaaas',
       }
     ]}.to_json
   end
