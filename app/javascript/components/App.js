@@ -1,8 +1,6 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Greeting from "./Greeting";
-// import HelloWorld from './HelloWorld'
 import configureStore from "../configureStore";
 import { Provider } from "react-redux";
 const store = configureStore();
