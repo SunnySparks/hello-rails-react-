@@ -34,7 +34,7 @@ class Greeting extends React.Component {
     return (
       <React.Fragment>
         Greeting: {this.props.greeting}
-        <button className="getGreetingsBtn" onClick={() => this.props.getGreetings()}>Greetings</button>
+        <button className="getGreetingsBtn" onClick={() => this.props.getGreetings()}>Click here to greet</button>
         <br />
         <div>{ randomGreet }</div>
       </React.Fragment>
